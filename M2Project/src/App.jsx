@@ -16,8 +16,6 @@ function App() {
       <Route path='/babysitters' element={<AllBabysittersPage />}></Route>
       <Route path='/babysitters/:babysitterId' element={<BabysitterDetailsPage />}></Route>
       <Route path='/babysitters/new' element={<AddBabysitterPage />}></Route>
-      <Route path='/test' element={<h1>test</h1>}></Route>
-      <Route path='/test' element={<h1>test</h1>}></Route>
       {/*<Route path='/families' element={<AllFamiliesPage />}></Route>
       <Route path='/families/:familyId' element={<FamilyDetailsPage />}></Route>
   <Route path='/families/new' element={<AddFamilyPage />}></Route>*/}

@@ -11,7 +11,7 @@ const BabysitterDetailsPage = () => {
 
     const fetchBabysitter = async () => {
         try {
-        const response = await fetch(`https.../babysitters/${babysitterId}`
+        const response = await fetch(`http://localhost:5005/babysitters/${babysitterId}`
         )
         if (response.ok) {
             const babysitter = await response.json()
@@ -33,7 +33,7 @@ const BabysitterDetailsPage = () => {
 
     const handleDelete = async () => {
         try {
-          const response = await fetch(`https.../babysitters/${babysitterId}`, {
+          const response = await fetch(`http://localhost:5005/babysitters/${babysitterId}`, {
             method: 'DELETE',
           })
           if (response.ok) {
@@ -50,8 +50,9 @@ const BabysitterDetailsPage = () => {
     <h1>Loading ...</h1>
     ) : (
         <>
-        <h1>babysitter.name</h1>
-        <p>...</p>
+        <img src={babysitter.picture.large}/>
+        <h1>{babysitter.name.title} {babysitter.name.first} {babysitter.name.last}</h1>
+        <p>{babysitter.email}</p>
         </>
     );
 }

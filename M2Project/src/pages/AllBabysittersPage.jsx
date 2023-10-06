@@ -7,7 +7,7 @@ const AllBabysittersPage = () => {
 
     const fetchAllBabysitters = async () => {
         try {
-          const response = await fetch(`${import.meta.env.API_URL}/babysitters`)
+          const response = await fetch('http://localhost:5005/babysitters')
           if (response.ok) {
             const allBabysitters = await response.json()
             console.log(allBabysitters)
@@ -30,7 +30,7 @@ const AllBabysittersPage = () => {
                 <Link to={`/babysitters/${el.id}`}>
                   <div>
                     <img src={el.picture.medium}/>
-                    <h2>{el.name}</h2>
+                    <h2>{el.name.first}</h2>
                   </div>
                 </Link>
               </li>
