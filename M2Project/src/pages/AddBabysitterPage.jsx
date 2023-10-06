@@ -51,42 +51,47 @@ const AddBabysitterPage = ({ isUpdate, babysitter }) => {
   }, [babysitter])
 
   return (
-<>
-    <h1>Are you a nanny?</h1>
-    <p>Only a few clicks away to register...350,000 people said they would recommend this website to their friends/families. I promise, you won't be disappointed!</p>
-    <form onSubmit={onSubmit}>
-      <label>
-        First Name
-        <input value={firstName} onChange={event => setFirstName(event.target.value)} required />
-      </label>
-      <label>
-        Last Name
-        <input value={lastName} onChange={event => setLastName(event.target.value)} required />
-      </label>
-      <label>
-        Address
-        <input value={location} onChange={event => setLocation(event.target.value)} required />
-      </label>
-      <label>
-        I am 
-        <select value={gender.event.target.value} onChange={event => setGender(event.target.value)} required />
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-      </label>
-      <label>
-        Email
-        <input value={email} onChange={event => setEmail(event.target.value)} required />
-      </label>
-      <label>
-        Password
-        <input value={password} onChange={event => setPassword(event.target.value)} required />
-      </label>
-      <label>
-        Description
-        <input value={description} onChange={event => setDescription(event.target.value)} required/>
-      </label>
-      <button type='submit'>{isUpdate ? 'Update' : 'Create your account'}</button>
-    </form>
+    <>
+        <h1>Are you a nanny?</h1>
+        <p>Only a few clicks away to register...350,000 people said they would recommend this website to their friends/families. I promise, you won't be disappointed!</p>
+        <form style={{ display: 'grid', gridTemplate: 'auto / 1fr' }} onSubmit={onSubmit}>
+        <label>
+            I am 
+            <select value={gender} onChange={event => setGender(event.target.value)} required>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            </select>
+          </label>
+          <label>
+            First Name
+            <input value={firstName} onChange={event => setFirstName(event.target.value)} required />
+          </label>
+          <label>
+            Last Name
+            <input value={lastName} onChange={event => setLastName(event.target.value)} required />
+          </label>
+          <label>
+            Address
+            <input value={location} onChange={event => setLocation(event.target.value)} required />
+          </label>
+          <label>
+            Address
+            <input value={location} onChange={event => setLocation(event.target.value)} required />
+          </label>
+          <label>
+            Email
+            <input value={email} onChange={event => setEmail(event.target.value)} required />
+          </label>
+          <label>
+            Password
+            <input value={password} onChange={event => setPassword(event.target.value)} required />
+          </label>
+          <label>
+            Description
+            <textarea value={description} onChange={event => setDescription(event.target.value)} required/>
+          </label>
+          <button type='submit'>{isUpdate ? 'Update' : 'Create your account'}</button>
+        </form>
     </>
   )
 }

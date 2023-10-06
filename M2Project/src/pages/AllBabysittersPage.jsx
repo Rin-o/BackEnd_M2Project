@@ -34,7 +34,7 @@ const AllBabysittersPage = () => {
                   </div>
                 </Link>
               </li>
-            ))};
+            ))}
         </ul>
       </div>
      );

@@ -51,21 +51,26 @@ const BabysitterDetailsPage = () => {
     ) : (
         <>
           <img src={babysitter.picture.large}/>
-          <h1>{babysitter.name.title} {babysitter.name.first} {babysitter.name.last}</h1>
+          <h1>{babysitter.name.first} {babysitter.name.last}</h1>
           <h4>{babysitter.registered.age} years of experience</h4>
-          <div>
-            <div style={{display: 'flex', flexDirection: 'column'}}>
+          <div style={{display: 'flex', alignItems:'center'}}>
+            <div style={{display: 'flex', flexDirection: 'column', textAlign: 'left'}}>
+              <h5>Age:</h5>
               <p>{babysitter.dob.age} years-old</p>
+              <h5>Telephone:</h5>
               <p>{babysitter.phone}</p>
+              <h5>Email:</h5>
               <p>{babysitter.email}</p>
+              <h5>Address:</h5>
               <p>{babysitter.location.street.number} {babysitter.location.street.name}
               <br/ >{babysitter.location.city} {babysitter.location.postcode}</p>
             </div>
-            <div>
+            <div style={{textAlign:'justify', marginLeft:'3rem'}}>
+              <h3>Description:</h3>
               <p>{babysitter.description}</p>
             </div>
-        </div>
-          
+          </div>
+          <button type='button'>Update Profile</button>
           
         </>
     );
