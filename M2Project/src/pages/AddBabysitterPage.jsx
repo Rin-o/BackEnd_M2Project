@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const AddBabysitterPage = ({ isUpdate, babyshitter }) => {
+const AddBabysitterPage = ({ isUpdate, babysitter }) => {
   const navigate = useNavigate()
 
   const [firstName, setFirstName] = useState('')
@@ -41,20 +41,14 @@ const AddBabysitterPage = ({ isUpdate, babyshitter }) => {
   useEffect(() => {
     if (isUpdate && babysitter) {
       setFirstName(babysitter.firstName)
-      setLastName
+      setLastName(babysitter.lastName)
+      setGender(babysitter.gender)
       setDescription(babysitter.description)
-
-      [lastName, setLastName] = useState('')
-      const [gender, setGender] = useState('')
-      const [location, setLocation] = useState('')
-      const [email, setEmail] = useState('')
-      const [description, setDescription] = useState('')
-      const [password, setPassword] = useState('')
-
-
-
+      setLocation(babysitter.gender)
+      setEmail(babysitter.email)
+      setPassword(babysitter.password)
     }
-  }, [project])
+  }, [babysitter])
 
   return (
 <>
@@ -62,16 +56,34 @@ const AddBabysitterPage = ({ isUpdate, babyshitter }) => {
     <p>Only a few seconds to register...350,000 people recommend the site. I promise, you won't be disappointed!</p>
     <form style={{ display: 'grid', gridTemplate: 'auto / 1fr' }} onSubmit={onSubmit}>
       <label>
-        Title
-        <input value={title} onChange={event => setTitle(event.target.value)} required />
+        First Name
+        <input value={firstName} onChange={event => setFirstName(event.target.value)} required />
+      </label>
+      <label>
+        Last Name
+        <input value={lastName} onChange={event => setLastName(event.target.value)} required />
+      </label>
+      <label>
+        Address
+        <input value={location} onChange={event => setFirstName(event.target.value)} required />
+      </label>
+      <label>
+        I am 
+        <select value={gender} onChange={event => setLastName(event.target.value)} required />
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </label>
+      <label>
+        Email
+        <input value={email} onChange={event => setFirstName(event.target.value)} required />
+      </label>
+      <label>
+        Password
+        <input value={password} onChange={event => setFirstName(event.target.value)} required />
       </label>
       <label>
         Description
-        <input
-          value={description}
-          onChange={event => setDescription(event.target.value)}
-          required
-        />
+        <input value={description} onChange={event => setDescription(event.target.value)} required/>
       </label>
       <button type='submit'>{isUpdate ? 'Update' : 'Create'}</button>
     </form>
