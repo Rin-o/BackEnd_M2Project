@@ -2,8 +2,8 @@ const HomePage = () => {
     return ( 
         <>
             <div>
-                <h1>Home Page</h1>
-                <p>List of nannys</p>
+                <h1>Iron Nannys</h1>
+                <p>Find your super nanny for your little Ironhacker</p>
             </div>
             
         </>

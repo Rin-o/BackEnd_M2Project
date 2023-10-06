@@ -23,14 +23,15 @@ const AllBabysittersPage = () => {
 
     return ( 
       <div>
-        <h1>All the babysitters</h1>
-        <ul>
+        <h1>Nannys</h1>
+        <ul style={{listStyle: 'none', display: 'grid', gridTemplate: 'auto / repeat(3, 1fr)',
+        gap: '1rem', padding: '0 1rem',}}>
             {babysitters.map(el => (
               <li key={el.id}>
                 <Link to={`/babysitters/${el.id}`}>
                   <div>
-                    <img src={el.picture.medium}/>
                     <h2>{el.name.first}</h2>
+                    <img src={el.picture.large}/>
                   </div>
                 </Link>
               </li>

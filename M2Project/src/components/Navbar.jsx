@@ -6,6 +6,9 @@ function Navbar() {
             <Link to='/'>
                 <button>HomePage</button>
             </Link>
+            <Link to='/babysitters'>
+                <button>Log in</button>
+            </Link>
         </nav>
     )
 }
