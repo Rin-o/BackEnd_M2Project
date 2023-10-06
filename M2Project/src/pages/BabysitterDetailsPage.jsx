@@ -50,9 +50,23 @@ const BabysitterDetailsPage = () => {
     <h1>Loading ...</h1>
     ) : (
         <>
-        <img src={babysitter.picture.large}/>
-        <h1>{babysitter.name.title} {babysitter.name.first} {babysitter.name.last}</h1>
-        <p>{babysitter.email}</p>
+          <img src={babysitter.picture.large}/>
+          <h1>{babysitter.name.title} {babysitter.name.first} {babysitter.name.last}</h1>
+          <h4>{babysitter.registered.age} years of experience</h4>
+          <div>
+            <div style={{display: 'flex', flexDirection: 'column'}}>
+              <p>{babysitter.dob.age} years-old</p>
+              <p>{babysitter.phone}</p>
+              <p>{babysitter.email}</p>
+              <p>{babysitter.location.street.number} {babysitter.location.street.name}
+              <br/ >{babysitter.location.city} {babysitter.location.postcode}</p>
+            </div>
+            <div>
+              <p>{babysitter.description}</p>
+            </div>
+        </div>
+          
+          
         </>
     );
 }
