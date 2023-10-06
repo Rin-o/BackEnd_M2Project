@@ -9,8 +9,8 @@ const AddBabysitterPage = ({ isUpdate, babysitter }) => {
   const [gender, setGender] = useState('')
   const [location, setLocation] = useState('')
   const [email, setEmail] = useState('')
-  const [description, setDescription] = useState('')
   const [password, setPassword] = useState('')
+  const [description, setDescription] = useState('')
 
   const onSubmit = async event => {
     event.preventDefault()
@@ -31,7 +31,7 @@ const AddBabysitterPage = ({ isUpdate, babysitter }) => {
       if (response.ok) {
         const currentBabysitter = await response.json()
         console.log(currentBabysitter)
-        navigate(`/projects/${currentBabysitter.id}`)
+        navigate(`/babysitters/${currentBabysitter.id}`)
       }
     } catch (error) {
       console.log(error)
@@ -52,9 +52,9 @@ const AddBabysitterPage = ({ isUpdate, babysitter }) => {
 
   return (
 <>
-    <h1>Are you a babysitter?</h1>
-    <p>Only a few seconds to register...350,000 people recommend the site. I promise, you won't be disappointed!</p>
-    <form style={{ display: 'grid', gridTemplate: 'auto / 1fr' }} onSubmit={onSubmit}>
+    <h1>Are you a nanny?</h1>
+    <p>Only a few clicks away to register...350,000 people said they would recommend this website to their friends/families. I promise, you won't be disappointed!</p>
+    <form onSubmit={onSubmit}>
       <label>
         First Name
         <input value={firstName} onChange={event => setFirstName(event.target.value)} required />
@@ -65,27 +65,27 @@ const AddBabysitterPage = ({ isUpdate, babysitter }) => {
       </label>
       <label>
         Address
-        <input value={location} onChange={event => setFirstName(event.target.value)} required />
+        <input value={location} onChange={event => setLocation(event.target.value)} required />
       </label>
       <label>
         I am 
-        <select value={gender} onChange={event => setLastName(event.target.value)} required />
+        <select value={gender.event.target.value} onChange={event => setGender(event.target.value)} required />
         <option value="male">Male</option>
         <option value="female">Female</option>
       </label>
       <label>
         Email
-        <input value={email} onChange={event => setFirstName(event.target.value)} required />
+        <input value={email} onChange={event => setEmail(event.target.value)} required />
       </label>
       <label>
         Password
-        <input value={password} onChange={event => setFirstName(event.target.value)} required />
+        <input value={password} onChange={event => setPassword(event.target.value)} required />
       </label>
       <label>
         Description
         <input value={description} onChange={event => setDescription(event.target.value)} required/>
       </label>
-      <button type='submit'>{isUpdate ? 'Update' : 'Create'}</button>
+      <button type='submit'>{isUpdate ? 'Update' : 'Create your account'}</button>
     </form>
     </>
   )
