@@ -7,7 +7,7 @@ const AllBabysittersPage = () => {
 
     const fetchAllBabysitters = async () => {
         try {
-          const response = await fetch('')
+          const response = await fetch(`${import.meta.env.API_URL}/babysitters`)
           if (response.ok) {
             const allBabysitters = await response.json()
             console.log(allBabysitters)
@@ -22,16 +22,21 @@ const AllBabysittersPage = () => {
       }, [])
 
     return ( 
-        <>
+      <div>
         <h1>All the babysitters</h1>
         <ul>
-            {babysitters.map(currentElem => (
-                <li key={currentElem.id}>
-                    <Link to={`/babysitters/${currentElem.id}`}>{currentElem.name}</Link>
-                </li>
+            {babysitters.map(el => (
+              <li key={el.id}>
+                <Link to={`/babysitters/${el.id}`}>
+                  <div>
+                    <img src={el.picture.medium}/>
+                    <h2>{el.name}</h2>
+                  </div>
+                </Link>
+              </li>
             ))};
         </ul>
-        </>
+      </div>
      );
 }
  
