@@ -18,7 +18,7 @@ const AddBabysitterPage = ({ isUpdate, babysitter }) => {
 
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/babysitters${isUpdate ? `/${babysitter.id}` : ''}`,
+        `http://localhost:5005/babysitters/new/${isUpdate ? `/${babysitter.id}` : ''}`,
         {
           method: isUpdate ? 'PUT' : 'POST',
           body: JSON.stringify(payload),

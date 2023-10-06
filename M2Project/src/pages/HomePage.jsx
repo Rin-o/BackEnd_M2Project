@@ -3,7 +3,7 @@ const HomePage = () => {
         <>
             <div>
                 <h1>Home Page</h1>
-                <p>List of babysitters</p>
+                <p>List of nannys</p>
             </div>
             
         </>
