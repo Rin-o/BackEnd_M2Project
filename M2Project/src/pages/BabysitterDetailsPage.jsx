@@ -71,6 +71,8 @@ const BabysitterDetailsPage = () => {
             </div>
           </div>
           <button type='button'>Send an email</button>
+          {/*<Link to={`/update/${babysitter.id}`}>Update</Link>*/}
+          <button type='button' onClick={e=>{handleDelete(babysitter.id)}}>Delete</button>
 
         </>
     );
