@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import {useState, useEffect} from 'react'
+import AddBabysitterPage from './AddBabysitterPage'
 
 const AllBabysittersPage = () => {
 
@@ -21,6 +22,10 @@ const AllBabysittersPage = () => {
         fetchAllBabysitters()
       }, [])
 
+     const  addNewBabysitter = (newBabysitter) => {
+      setBabysitters([newBabysitter, ...babysitters])
+      }
+
     return ( 
       <div>
         <h1>Nannys</h1>
@@ -30,7 +35,7 @@ const AllBabysittersPage = () => {
               <li key={el.id}>
                 <Link to={`/babysitters/${el.id}`}>
                   <div>
-                    <h2>{el.name.first}</h2>
+                    <h2>{el.name?.first}</h2>
                     <img src={el.picture.large}/>
                   </div>
                 </Link>
