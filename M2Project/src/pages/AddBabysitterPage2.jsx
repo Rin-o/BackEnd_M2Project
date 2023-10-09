@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const AddBabysitterPage = ({ isUpdate, babysitter }) => {
+const AddBabysitterPage = ({ isUpdate, babysitter, formData }) => { //added
   const navigate = useNavigate()
 
   const [firstName, setFirstName] = useState('')
@@ -11,14 +11,15 @@ const AddBabysitterPage = ({ isUpdate, babysitter }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [description, setDescription] = useState('')
+  const [picture, setPicture] = useState(null)
 
   const onSubmit = async event => {
     event.preventDefault()
-    const payload = { firstName, lastName, gender, location, email, password, description }
+    const payload = { firstName, lastName, gender, location, email, password, description, picture }
 
     try {
       const response = await fetch(
-        `http://localhost:5005/babysitters/new/${isUpdate ? `/${babysitter.id}` : ''}`,
+        `http://localhost:5005/babysitters/new2/${isUpdate ? `/${babysitter.id}` : ''}`,
         {
           method: isUpdate ? 'PUT' : 'POST',
           body: JSON.stringify(payload),
@@ -54,8 +55,13 @@ const AddBabysitterPage = ({ isUpdate, babysitter }) => {
     <>
         <h1>Are you a nanny?</h1>
         <p>Only a few clicks away to register...350,000 people said they would recommend this website to their friends/families. I promise, you won't be disappointed!</p>
+        
+        <p>First Name: {formData.firstName}</p>
+        <p>Last Name: {formData.lastName}</p>
+        <p>Email: {formData.email}</p>
+        <p>Password: {formData.password}</p>
         <form style={{ display: 'grid', gridTemplate: 'auto / 1fr' }} onSubmit={onSubmit}>
-        <label>
+        {/*<label>
             I am 
             <select value={gender} onChange={event => setGender(event.target.value)} required>
             <option value="male">Male</option>
@@ -71,25 +77,25 @@ const AddBabysitterPage = ({ isUpdate, babysitter }) => {
             <input value={lastName} onChange={event => setLastName(event.target.value)} required />
           </label>
           <label>
-            Address
-            <input value={location} onChange={event => setLocation(event.target.value)} required />
-          </label>
-          <label>
-            Address
-            <input value={location} onChange={event => setLocation(event.target.value)} required />
-          </label>
-          <label>
             Email
             <input value={email} onChange={event => setEmail(event.target.value)} required />
           </label>
           <label>
             Password
             <input value={password} onChange={event => setPassword(event.target.value)} required />
+  </label>*/}
+          <label>
+            Address
+            <input value={location} onChange={event => setLocation(event.target.value)} required />
           </label>
           <label>
             Description
             <textarea value={description} onChange={event => setDescription(event.target.value)} required/>
           </label>
+          <label>
+            Picture
+            <input type="file" accept="image/*" value={picture} onChange={event => setPicture(event.target.value)}/>
+        </label>
           <button type='submit'>{isUpdate ? 'Update' : 'Create your account'}</button>
         </form>
     </>
