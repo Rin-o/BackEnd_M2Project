@@ -5,7 +5,6 @@ import HomePage from './pages/HomePage'
 import AllBabysittersPage from './pages/AllBabysittersPage'
 import BabysitterDetailsPage from './pages/BabysitterDetailsPage'
 import AddBabysitterPage from './pages/AddBabysitterPage'
-import AddBabysitterPage2 from './pages/AddBabysitterPage2'
 import UpdatePage from './pages/UpdatePage'
 
 function App() {
@@ -18,7 +17,6 @@ function App() {
       <Route path='/babysitters' element={<AllBabysittersPage />}></Route>
       <Route path='/babysitters/:babysitterId' element={<BabysitterDetailsPage />}></Route>
       <Route path='/babysitters/new' element={<AddBabysitterPage />}></Route>
-      <Route path='/babysitters/new2' element={<AddBabysitterPage2 />}></Route>
       <Route path='/update/:babysitterId' element={<UpdatePage />}></Route>
       
       <Route path='*' element={<h1>404 Page</h1>}></Route>

@@ -10,11 +10,13 @@ const UpdatePage = () => {
     const [gender, setGender] = useState('')
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
+    const [age, setAge] = useState('')
     const [streetName, setStreetName] = useState('')
     const [streetNumber, setStreetNumber] = useState('')
     const [cityName, setCityName] = useState('')
     const [postcode, setPostcode] = useState('')
     const [email, setEmail] = useState('')
+    const [telephone, setTelephone] = useState('')
     const [password, setPassword] = useState('')
     const [description, setDescription] = useState('')
     const [largePic, setLargePic] = useState('')
@@ -25,7 +27,9 @@ const UpdatePage = () => {
         const payload = { 
             name:{ first: firstName, last: lastName,}, 
             gender, 
+            dob: {age: age},
             email, 
+            phone: telephone,
             password, 
             location: { street: {name: streetName, number: streetNumber}, city: cityName, postcode: postcode}, 
             description, 
@@ -65,12 +69,14 @@ const UpdatePage = () => {
             setFirstName(babysitter.name.first)
             setLastName(babysitter.name.last)
             setGender(babysitter.gender)
+            setAge(babysitter.dob.age) 
             setDescription(babysitter.description)
             setStreetNumber(babysitter.location.street.number)
             setStreetName(babysitter.location.street.name)
             setCityName(babysitter.location.city)
             setPostcode(babysitter.location.postcode)
             setEmail(babysitter.email)
+            setTelephone(babysitter.phone) 
             setPassword(babysitter.password)
             setLargePic(babysitter.picture.large)
             setRegistered(babysitter.registered.age)
@@ -102,6 +108,10 @@ const UpdatePage = () => {
             <input value={lastName} onChange={event => setLastName(event.target.value)}/>
           </label>
           <label>
+            Age
+            <input type='number' value={age} onChange={event => setAge(event.target.value)}  />
+          </label>
+          <label>
             Street Number
             <input value={streetNumber} onChange={event => setStreetNumber(event.target.value)}/>
           </label>
@@ -122,12 +132,16 @@ const UpdatePage = () => {
             <input value={email} onChange={event => setEmail(event.target.value)}/>
           </label>
           <label>
+            Telephone
+            <input value={telephone} onChange={event => setTelephone(event.target.value)}  />
+          </label>
+          <label>
             Password
             <input value={password} onChange={event => setPassword(event.target.value)}/>
           </label>
           <label>
             Experience
-            <input value={registered} onChange={event => setRegistered(event.target.value)}/>
+            <input type='number' value={registered} onChange={event => setRegistered(event.target.value)}/>
           </label>
           <label>
             Description
