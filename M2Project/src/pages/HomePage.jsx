@@ -4,8 +4,8 @@ const HomePage = () => {
     return ( 
         <>
             <div>
-                <h1>Iron Nannys</h1>
-                <p>Find your super nanny for your little Ironhacker</p>
+                <h1>Exceptional child care and early learning for today's families.</h1>
+                <p>With warm, experienced nannies, full-day schedules, rolling admissions and a world-class curriculum, IronNanny meets you where you are.</p>
 
                 <Link to='/babysitters'>
                 <button>Find a nanny</button>
