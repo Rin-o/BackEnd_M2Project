@@ -4,12 +4,13 @@ import { useNavigate } from 'react-router-dom'
 const AddBabysitterPage = ({ isUpdate, babysitter }) => {
   const navigate = useNavigate()
 
-  const [gender, setGender] = useState('')
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
+  const [gender, setGender] = useState('')
+  const [location, setLocation] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
- 
+  const [description, setDescription] = useState('')
 
   const onSubmit = async event => {
     event.preventDefault()
@@ -17,9 +18,9 @@ const AddBabysitterPage = ({ isUpdate, babysitter }) => {
 
     try {
       const response = await fetch(
-        `http://localhost:5005/babysitters/new`,
+        `http://localhost:5005/babysitters/new/${isUpdate ? `/${babysitter.id}` : ''}`,
         {
-          method: 'PUT',
+          method: isUpdate ? 'PUT' : 'POST',
           body: JSON.stringify(payload),
           headers: {
             'Content-type': 'application/json',
@@ -30,7 +31,7 @@ const AddBabysitterPage = ({ isUpdate, babysitter }) => {
       if (response.ok) {
         const currentBabysitter = await response.json()
         console.log(currentBabysitter)
-        navigate(`/babysitters/new2`)
+        navigate(`/babysitters/${currentBabysitter.id}`)
       }
     } catch (error) {
       console.log(error)
@@ -39,9 +40,11 @@ const AddBabysitterPage = ({ isUpdate, babysitter }) => {
 
   useEffect(() => {
     if (isUpdate && babysitter) {
-      setGender(babysitter.gender)
       setFirstName(babysitter.firstName)
       setLastName(babysitter.lastName)
+      setGender(babysitter.gender)
+      setDescription(babysitter.description)
+      setLocation(babysitter.gender)
       setEmail(babysitter.email)
       setPassword(babysitter.password)
     }
@@ -68,6 +71,14 @@ const AddBabysitterPage = ({ isUpdate, babysitter }) => {
             <input value={lastName} onChange={event => setLastName(event.target.value)} required />
           </label>
           <label>
+            Address
+            <input value={location} onChange={event => setLocation(event.target.value)} required />
+          </label>
+          <label>
+            Address
+            <input value={location} onChange={event => setLocation(event.target.value)} required />
+          </label>
+          <label>
             Email
             <input value={email} onChange={event => setEmail(event.target.value)} required />
           </label>
@@ -75,7 +86,11 @@ const AddBabysitterPage = ({ isUpdate, babysitter }) => {
             Password
             <input value={password} onChange={event => setPassword(event.target.value)} required />
           </label>
-          <button type='submit'>Create your account</button>
+          <label>
+            Description
+            <textarea value={description} onChange={event => setDescription(event.target.value)} required/>
+          </label>
+          <button type='submit'>{isUpdate ? 'Update' : 'Create your account'}</button>
         </form>
     </>
   )

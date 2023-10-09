@@ -70,7 +70,7 @@ const BabysitterDetailsPage = () => {
               <p>{babysitter.description}</p>
             </div>
           </div>
-          <button type='button'>Add to my favourites</button>
+          <button type='button'>Send an email</button>
 
         </>
     );
