@@ -67,11 +67,11 @@ const UpdatePage = () => {
           </label>
           <label>
             First Name
-            <input value={values.name.first} onChange={event => setValues({...values, name: event.target.value})}/>
+            <input value={values.name.first} onChange={event => setValues({...values, first: event.target.value})}/>
           </label>
           <label>
             Last Name
-            <input value={values.name.last} onChange={event => setValues({...values, name: event.target.value})}/> 
+            <input value={values.name.last} onChange={event => setValues({...values, last: event.target.value})}/> 
           </label>
           <label>
             Description
