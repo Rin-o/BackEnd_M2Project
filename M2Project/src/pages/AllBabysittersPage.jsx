@@ -36,7 +36,7 @@ const AllBabysittersPage = () => {
                 <Link to={`/babysitters/${el.id}`}>
                   <div>
                     <h2>{el.name?.first}</h2>
-                    <img src={el.picture.large}/>
+                    <img src={el.picture?.large}/>
                   </div>
                 </Link>
               </li>
