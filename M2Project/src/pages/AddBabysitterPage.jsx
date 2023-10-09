@@ -16,6 +16,7 @@ const AddBabysitterPage = ({ isUpdate, babysitter }) => {
   const [password, setPassword] = useState('')
   const [description, setDescription] = useState('')
   const [largePic, setLargePic] = useState('')
+  const [registered, setRegistered] = useState('')
 
   const onSubmit = async event => {
     event.preventDefault()
@@ -25,6 +26,7 @@ const AddBabysitterPage = ({ isUpdate, babysitter }) => {
       email, 
       password, 
       location: { street: {name: streetName, number: streetNumber}, city: cityName, postcode: postcode}, 
+      resgistered: {age: registered},
       description, 
       picture: {large: largePic},
       id: uuidv4()}
@@ -64,6 +66,7 @@ console.log(payload)
       setEmail(babysitter.email)
       setPassword(babysitter.password)
       setLargePic(babysitter.largePic)
+      setRegistered(babysitter.registered.age)
     }
   }, [babysitter])
 
@@ -100,7 +103,7 @@ console.log(payload)
             <input value={cityName} onChange={event => setCityName(event.target.value)}  />
           </label>
           <label>
-            City Name
+            Postcode
             <input value={postcode} onChange={event => setPostcode(event.target.value)}  />
           </label>
           <label>
@@ -112,6 +115,10 @@ console.log(payload)
             <input value={password} onChange={event => setPassword(event.target.value)} />
           </label>
           <label>
+            Experience
+            <input value={registered} onChange={event => setRegistered(event.target.value)}/>
+          </label>
+          <label>
             Description
             <textarea value={description} onChange={event => setDescription(event.target.value)} />
           </label>
@@ -119,7 +126,7 @@ console.log(payload)
             Picture
             <input type="file" accept="image/*" value={largePic} onChange={event => setLargePic(event.target.value)}/>
         </label>
-        <button type="submit">{isUpdate ? 'Update' : 'Create your account'}</button>
+        <button type="submit">Create your account</button>
         </form>
     </>
   )

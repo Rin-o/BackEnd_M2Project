@@ -18,6 +18,7 @@ const UpdatePage = () => {
     const [password, setPassword] = useState('')
     const [description, setDescription] = useState('')
     const [largePic, setLargePic] = useState('')
+    const [registered, setRegistered] = useState('')
     
     const onSubmit = async event => {
         event.preventDefault()
@@ -28,6 +29,7 @@ const UpdatePage = () => {
             password, 
             location: { street: {name: streetName, number: streetNumber}, city: cityName, postcode: postcode}, 
             description, 
+            resgistered: {age: registered},
             picture: {large: largePic},
             id: uuidv4()}
          console.log(payload)
@@ -71,6 +73,7 @@ const UpdatePage = () => {
             setEmail(babysitter.email)
             setPassword(babysitter.password)
             setLargePic(babysitter.picture.large)
+            setRegistered(babysitter.registered.age)
         }
     }
 
@@ -85,7 +88,7 @@ const UpdatePage = () => {
             <form onSubmit={onSubmit} style={{ display: 'grid', gridTemplate: 'auto / 1fr' }}>
           <label>
             I am 
-            <select value={gender} onChange={event => setGender({...payload, gender: event.target.value})}>
+            <select value={gender} onChange={event => setGender(event.target.value)}>
             <option value="male">Male</option>
             <option value="female">Female</option>
             </select>
@@ -99,8 +102,16 @@ const UpdatePage = () => {
             <input value={lastName} onChange={event => setLastName(event.target.value)}/>
           </label>
           <label>
+            Street Number
+            <input value={streetNumber} onChange={event => setStreetNumber(event.target.value)}/>
+          </label>
+          <label>
             Street Name
             <input value={streetName} onChange={event => setStreetName(event.target.value)}/>
+          </label>
+          <label>
+            Postcode
+            <input value={postcode} onChange={event => setPostcode(event.target.value)}/>
           </label>
           <label>
             City Name
@@ -115,8 +126,16 @@ const UpdatePage = () => {
             <input value={password} onChange={event => setPassword(event.target.value)}/>
           </label>
           <label>
+            Experience
+            <input value={registered} onChange={event => setRegistered(event.target.value)}/>
+          </label>
+          <label>
             Description
             <textarea value={description} onChange={event => setDescription(event.target.value)}/>
+          </label>
+          <label>
+            Picture
+            <input value={largePic} onChange={event => setLargePic(event.target.value)}/>
           </label>
           <button>Update</button>
         </form>
