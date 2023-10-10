@@ -113,7 +113,7 @@ const UpdatePage = () => {
           </label>
           <label>
             Street Number
-            <input type='number' value={streetNumber} onChange={event => setStreetNumber(event.target.value)}/>
+            <input value={streetNumber} onChange={event => setStreetNumber(event.target.value)}/>
           </label>
           <label>
             Street Name
@@ -121,7 +121,7 @@ const UpdatePage = () => {
           </label>
           <label>
             Postcode
-            <input type='number' value={postcode} onChange={event => setPostcode(event.target.value)}/>
+            <input value={postcode} onChange={event => setPostcode(event.target.value)}/>
           </label>
           <label>
             City Name
