@@ -11,8 +11,7 @@ const BabysitterDetailsPage = () => {
 
     const fetchBabysitter = async () => {
         try {
-        const response = await fetch(`http://localhost:5005/babysitters/${babysitterId}`
-        )
+        const response = await fetch(`http://localhost:5005/babysitters/${babysitterId}`)
         if (response.ok) {
             const babysitter = await response.json()
             setBabysitter(babysitter)
