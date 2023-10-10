@@ -50,20 +50,20 @@ const BabysitterDetailsPage = () => {
     <h1>Loading ...</h1>
     ) : (
         <>
-          <img src={babysitter.picture.large}/>
+          <img src={babysitter.picture}/>
           <h1>{babysitter.name.first} {babysitter.name.last}</h1>
-          <h4>{babysitter.registered.age} years of experience</h4>
+          <h4>{babysitter.experience} years of experience</h4>
           <div style={{display: 'flex', alignItems:'center'}}>
             <div style={{display: 'flex', flexDirection: 'column', textAlign: 'left'}}>
               <h5>Age:</h5>
-              <p>{babysitter.dob.age} years-old</p>
+              <p>{babysitter.age} years-old</p>
               <h5>Telephone:</h5>
               <p>{babysitter.phone}</p>
               <h5>Email:</h5>
               <p>{babysitter.email}</p>
               <h5>Address:</h5>
-              <p>{babysitter.location.street.number} {babysitter.location.street.name}
-              <br/ >{babysitter.location.city} {babysitter.location.postcode}</p>
+              <p>{babysitter.location.streetNumber} {babysitter.location.streetName}
+              <br/ >{babysitter.location.postcode} {babysitter.location.city}</p>
             </div>
             <div style={{textAlign:'justify', marginLeft:'3rem'}}>
               <h3>Description:</h3>
@@ -72,7 +72,7 @@ const BabysitterDetailsPage = () => {
           </div>
           <button type='button'>Send an email</button>
           <Link to={`/update/${babysitter.id}`}>Update</Link>
-          <button type='button' onClick={e=>{handleDelete(babysitter.id)}}>Delete</button>
+          <button type='button' onClick={()=>{handleDelete(babysitter.id)}}>Delete</button>
         </>
     );
 }

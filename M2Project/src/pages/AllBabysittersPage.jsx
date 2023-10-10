@@ -35,8 +35,8 @@ const AllBabysittersPage = () => {
               <li key={el.id}>
                 <Link to={`/babysitters/${el.id}`}>
                   <div>
-                    <h2>{el.name?.first}</h2>
-                    <img src={el.picture?.large}/>
+                    <h2>{el.name.first}</h2>
+                    <img src={el.picture}/>
                   </div>
                 </Link>
               </li>
