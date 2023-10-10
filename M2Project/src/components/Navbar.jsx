@@ -2,6 +2,7 @@ import {Link} from 'react-router-dom'
 
 function Navbar() {
     return (
+        <>
         <nav style={{display: 'flex', alignItems: 'center'}}>
             <h2>IronNanny</h2>
             <div>
@@ -14,8 +15,14 @@ function Navbar() {
                 <Link to='/babysitters/new'>
                     <button>Register</button>
                 </Link>
+
+                <Link to='/aboutus'>
+                <button>About us</button>
+                </Link>
             </div>
         </nav>
+        
+        </>
     )
 }
 

@@ -8,33 +8,33 @@ const AddBabysitterPage = ({ isUpdate, babysitter }) => {
   const [gender, setGender] = useState('')
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
-  const [age, setAge] = useState('')
+  const [age, setAge] = useState(0)
   const [streetName, setStreetName] = useState('')
-  const [streetNumber, setStreetNumber] = useState('')
+  const [streetNumber, setStreetNumber] = useState(0)
   const [cityName, setCityName] = useState('')
-  const [postcode, setPostcode] = useState('')
+  const [postcode, setPostcode] = useState(0)
   const [email, setEmail] = useState('')
-  const [telephone, setTelephone] = useState('')
+  const [phone, setPhone] = useState('')
   const [password, setPassword] = useState('')
   const [description, setDescription] = useState('')
-  const [largePic, setLargePic] = useState('')
-  const [registered, setRegistered] = useState('')
+  const [picture, setPicture] = useState('')
+  const [experience, setExperience] = useState(0)
 
   const onSubmit = async event => {
     event.preventDefault()
     const payload = { 
-      name:{ first: firstName, last: lastName,}, 
+      name:{first: firstName, last: lastName,}, 
       gender, 
-      dob: {age: age},
+      age,
       email, 
-      phone: telephone,
+      phone,
       password, 
-      location: { street: {name: streetName, number: streetNumber}, city: cityName, postcode: postcode}, 
-      resgistered: {age: registered},
+      location: {streetNumber, streetName, city: cityName, postcode}, 
+      experience,
       description, 
-      picture: {large: largePic},
+      picture,
       id: uuidv4()}
-console.log(payload)
+      console.log(payload)
 
     try {
       const response = await fetch(
@@ -51,7 +51,7 @@ console.log(payload)
       if (response.ok) {
         const currentBabysitter = await response.json()
         console.log(currentBabysitter)
-        navigate(`/babysitters`)      }
+        navigate(`/babysitters/${currentBabysitter.id}`)      }
     } catch (error) {
       console.log(error)
     }
@@ -62,17 +62,17 @@ console.log(payload)
       setFirstName(babysitter.name.first)   // or firstName
       setLastName(babysitter.name.last) // or lastName
       setGender(babysitter.gender)
-      setAge(babysitter.dob.age) //or age
+      setAge(babysitter.age) //or age
       setDescription(babysitter.description)
-      setStreetNumber(babysitter.location.street.number) //streetNumber
-      setStreetName(babysitter.location.street.name) //streetName
+      setStreetNumber(babysitter.location.streetNumber) //streetNumber
+      setStreetName(babysitter.location.streetName) //streetName
       setCityName(babysitter.location.city) //cityName
       setPostcode(babysitter.location.postcode) //postcode
       setEmail(babysitter.email)
-      setTelephone(babysitter.phone) //telephone
+      setPhone(babysitter.phone) //telephone
       setPassword(babysitter.password)
-      setLargePic(babysitter.picture.large) //largePic
-      setRegistered(babysitter.registered.age) //registered
+      setPicture(babysitter.picture) //largePic
+      setExperience(babysitter.experience) //registered
     }
   }, [babysitter])
 
@@ -102,7 +102,7 @@ console.log(payload)
           </label>
           <label>
             Street Number
-            <input value={streetNumber} onChange={event => setStreetNumber(event.target.value)}  />
+            <input type ='number' value={streetNumber} onChange={event => setStreetNumber(event.target.value)}  />
           </label>
           <label>
             Street Name
@@ -114,7 +114,7 @@ console.log(payload)
           </label>
           <label>
             Postcode
-            <input value={postcode} onChange={event => setPostcode(event.target.value)}  />
+            <input type='number' value={postcode} onChange={event => setPostcode(event.target.value)}  />
           </label>
           <label>
             Email
@@ -122,7 +122,7 @@ console.log(payload)
           </label>
           <label>
             Telephone
-            <input value={telephone} onChange={event => setTelephone(event.target.value)}  />
+            <input value={phone} onChange={event => setPhone(event.target.value)}  />
           </label>
           <label>
             Password
@@ -130,7 +130,7 @@ console.log(payload)
           </label>
           <label>
             Experience
-            <input type='number' value={registered} onChange={event => setRegistered(event.target.value)}/>
+            <input type='number' value={experience} onChange={event => setExperience(event.target.value)}/>
           </label>
           <label>
             Description
@@ -138,7 +138,7 @@ console.log(payload)
           </label>
           <label>
             Picture
-            <input type="file" accept="image/*" value={largePic} onChange={event => setLargePic(event.target.value)}/>
+            <input type="file" accept="image/*" value={picture} onChange={event => setPicture(event.target.value)}/>
         </label>
         <button type="submit">Create your account</button>
         </form>

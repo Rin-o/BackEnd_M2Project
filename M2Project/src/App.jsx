@@ -6,6 +6,7 @@ import AllBabysittersPage from './pages/AllBabysittersPage'
 import BabysitterDetailsPage from './pages/BabysitterDetailsPage'
 import AddBabysitterPage from './pages/AddBabysitterPage'
 import UpdatePage from './pages/UpdatePage'
+import AboutUsPage from './pages/AboutUsPage'
 
 function App() {
 
@@ -18,9 +19,12 @@ function App() {
       <Route path='/babysitters/:babysitterId' element={<BabysitterDetailsPage />}></Route>
       <Route path='/babysitters/new' element={<AddBabysitterPage />}></Route>
       <Route path='/update/:babysitterId' element={<UpdatePage />}></Route>
+      <Route path='/aboutus' element={<AboutUsPage />}></Route>
       
       <Route path='*' element={<h1>404 Page</h1>}></Route>
     </Routes>
+    <footer>©2023 All Right Reserved by Alice and Rino</footer>
+
     </div>
   );
 }
